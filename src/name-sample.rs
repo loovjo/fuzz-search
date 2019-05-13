@@ -313,7 +313,7 @@ fn main() {
 
     let search = "Jonathan Loov";
 
-    let best = fuzz_search::best_matches(
+    let best = fuzz_search::best_matches_scores(
         search,
         all_names,
         10,
