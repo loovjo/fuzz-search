@@ -19,6 +19,10 @@ pub fn fuzzy_search_score(pattern: &str, st: &str) -> isize {
     let pattern = pattern.nfc().collect::<String>();
     let st = st.nfc().collect::<String>();
 
+    fuzzy_search_score_no_norm(&pattern, &st)
+}
+
+pub fn fuzzy_search_score_no_norm(pattern: &str, st: &str) -> isize {
     let orig_st = st.clone();
 
     let pattern = pattern.to_lowercase();

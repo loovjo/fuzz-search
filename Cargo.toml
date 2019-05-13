@@ -1,0 +1,18 @@
+[package]
+name = "fuzz-search"
+version = "0.1.0"
+authors = ["loovjo <jonathan.loov@gmail.com>"]
+edition = "2018"
+
+[lib]
+name = "fuzz_search"
+path = "src/lib.rs"
+
+[[bin]]
+name = "fuzz_names"
+path = "src/name-sample.rs"
+
+
+[dependencies]
+lazy_static = "1.0"
+unicode-normalization = "0.1"

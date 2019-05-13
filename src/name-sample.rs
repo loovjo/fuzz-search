@@ -1,8 +1,4 @@
-#[macro_use]
-extern crate lazy_static;
-extern crate unicode_normalization;
-
-mod fuzz_search;
+extern crate fuzz_search;
 
 fn main() {
     let names = vec![
@@ -317,13 +313,11 @@ fn main() {
 
     let search = "Jonathan Loov";
 
-    let mut names_scores = all_names
-        .iter()
-        .map(|name| (name, fuzz_search::fuzzy_search_score(search, name)))
-        .collect::<Vec<_>>();
-
-    names_scores.sort_by_key(|(_, x)| -x);
-
-    let best = names_scores.into_iter().take(10).collect::<Vec<_>>();
+    let best = fuzz_search::best_matches(
+        search,
+        all_names,
+        10,
+    )
+    .collect::<Vec<_>>();
     println!("{:#?}", best);
 }
